@@ -71,12 +71,36 @@ function autolinkModals(doc) {
 }
 
 /**
+ * Converts links that point at an image URL into <picture><img> elements.
+ * xwalk renders external image references (not DAM assets) as plain anchors;
+ * blocks expect real images, so normalize them before decoration.
+ * @param {Element} main The container element
+ */
+function normalizeImageLinks(main) {
+  const IMAGE_EXT = /\.(png|jpe?g|webp|gif|svg|avif|bmp)(\?.*)?$/i;
+  main.querySelectorAll('a[href]').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (!IMAGE_EXT.test(href)) return;
+    // Only auto-linked image URLs (link text is the URL itself), not real CTAs.
+    const text = a.textContent.trim();
+    if (text && text !== href && text !== a.href) return;
+    const img = document.createElement('img');
+    img.src = href;
+    img.alt = '';
+    img.loading = 'lazy';
+    const picture = document.createElement('picture');
+    picture.append(img);
+    a.replaceWith(picture);
+  });
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks() {
+function buildAutoBlocks(main) {
   try {
-    // TODO: add auto block, if needed
+    normalizeImageLinks(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
