@@ -1,7 +1,7 @@
 {
   "mappings": [
-    "/content/aem-block-collection/:/",
-    "/content/aem-block-collection/metadata:/metadata.json",
-    "/content/aem-block-collection/configuration:/.helix/config.json"
+    "/content/spring-green/:/",
+    "/content/spring-green/metadata:/metadata.json",
+    "/content/spring-green/configuration:/.helix/config.json"
   ]
 }
