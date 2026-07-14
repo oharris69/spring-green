@@ -1,0 +1,108 @@
+/* Block: hero-banner -- full-bleed photographic banner with overlaid text "leaf" box.
+   Values extracted from source computed styles (spring-green.com div.hero-top). */
+
+/* Full-bleed: escape the section max-width/padding */
+.hero-banner-container .hero-banner-wrapper {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Block is the positioning context for the background image + overlay box */
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+  border-radius: 0 0 0 70px;
+}
+
+/* Row 1 = image cell -> full-bleed background image behind everything */
+.hero-banner > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  margin: 0;
+}
+
+/* Row 2 = text cell -> green gradient "leaf" box overlaid on the image */
+.hero-banner > div:nth-child(2) {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  margin: 0;
+}
+
+.hero-banner > div:first-child > div,
+.hero-banner > div:first-child p {
+  margin: 0;
+  height: 100%;
+}
+
+.hero-banner picture {
+  display: block;
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.hero-banner > div:nth-child(2) > div {
+  box-sizing: border-box;
+  max-width: 90%;
+  padding: 40px 40px 30px;
+  background-image: linear-gradient(90deg, rgb(0 149 58) 37.9%, rgb(77 164 58 / 48%) 121.27%);
+  border-radius: 70px 0;
+}
+
+/* Eyebrow */
+.hero-banner h2 {
+  margin: 0;
+  color: rgb(255 255 255);
+  font-family: var(--heading-font-family);
+  font-size: 16.8px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+/* Headline */
+.hero-banner h1 {
+  margin: 16px 0 0;
+  color: rgb(255 255 255);
+  font-family: var(--heading-font-family);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+  text-transform: capitalize;
+}
+
+@media (width >= 900px) {
+  .hero-banner {
+    min-height: 577px;
+  }
+
+  .hero-banner > div:nth-child(2) {
+    align-items: center;
+    min-height: 577px;
+    padding-left: 48px;
+  }
+
+  .hero-banner > div:nth-child(2) > div {
+    max-width: 600px;
+    padding: 65px 60px 20px 40px;
+  }
+
+  .hero-banner h1 {
+    margin: 24px 0 16px;
+    font-size: 31.5px;
+    line-height: 1.1;
+  }
+}

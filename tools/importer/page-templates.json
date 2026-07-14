@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "homepage",
+      "urls": [
+        "https://www.spring-green.com/"
+      ],
+      "representativeUrl": "https://www.spring-green.com/",
+      "coverageGaps": [],
+      "description": "Spring-Green homepage: hero with service quote form, three service cards (Lawn Care, Pest Control, Tree Care), 'The Green in SpringGreen' about section with satisfaction guarantee, service provider locator, and a Yardology article carousel.",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            "div.hero-top"
+          ]
+        },
+        {
+          "name": "cards-service",
+          "instances": [
+            "#hero_bottom"
+          ]
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#satisfaction_guarantee"
+          ]
+        },
+        {
+          "name": "hero-cta",
+          "instances": [
+            "div.grey-bend"
+          ]
+        },
+        {
+          "name": "carousel-article",
+          "instances": [
+            "div.green-bend"
+          ]
+        },
+        {
+          "name": "section-locator",
+          "instances": [
+            "div.grey-bend"
+          ],
+          "section": "grey"
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Hero",
+          "selector": ".hero-banner",
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "service-cards",
+          "name": "Service Cards",
+          "selector": ".cards-service",
+          "style": null,
+          "blocks": [
+            "cards-service"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "about-satisfaction",
+          "name": "About / Satisfaction",
+          "selector": ".columns-media",
+          "style": null,
+          "blocks": [
+            "columns-media"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "locator",
+          "name": "Service Provider Locator",
+          "selector": ".hero-cta",
+          "style": "grey",
+          "blocks": [
+            "hero-cta"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "yardology-carousel",
+          "name": "Yardology Carousel",
+          "selector": ".carousel-article",
+          "style": null,
+          "blocks": [
+            "carousel-article"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

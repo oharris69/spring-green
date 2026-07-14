@@ -1,0 +1,38 @@
+{
+  "variantName": "columns-media",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-07-14T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.spring-green.com/",
+    "originPage": "SpringGreen homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "about",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "two side-by-side text+image rows",
+    "buttonCount": 0,
+    "imageCount": 2
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "about / narrative sections pairing copy with an image",
+      "side-by-side text and media rows",
+      "guarantee or feature callouts with an accompanying image"
+    ],
+    "notSuitableFor": [
+      "grids of repeating distinct items (use cards)",
+      "single-column content"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-14T00:00:00.000Z"
+  }
+}

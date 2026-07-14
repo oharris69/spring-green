@@ -1,0 +1,38 @@
+{
+  "variantName": "cards-service",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-07-14T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.spring-green.com/",
+    "originPage": "SpringGreen homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "wide",
+    "purpose": "service",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "3 linked cards, each image + heading + description + arrow",
+    "buttonCount": 0,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "grids of service or product offerings",
+      "3-up feature cards with an image, title, description and link",
+      "clickable category tiles"
+    ],
+    "notSuitableFor": [
+      "single-item highlights",
+      "text-only lists without images"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-14T00:00:00.000Z"
+  }
+}

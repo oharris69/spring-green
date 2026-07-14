@@ -1,0 +1,218 @@
+/* Block: carousel-article — CSS matched to source div.green-bend "Yardology" carousel */
+
+/* ---- Green band wrapper ---- */
+.carousel-article.block {
+  position: relative;
+  background-image: linear-gradient(0deg, rgb(37 89 11) 20%, rgb(77 164 58) 69.97%);
+  border-radius: 0 70px 70px;
+  padding: 40px 24px;
+  color: var(--text-color);
+}
+
+/* ---- Slides container / list ---- */
+.carousel-article .carousel-article-slides-container {
+  position: relative;
+}
+
+.carousel-article .carousel-article-slides,
+.carousel-article .carousel-article-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-article .carousel-article-slides {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+}
+
+.carousel-article .carousel-article-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---- White rounded panel = each slide ---- */
+.carousel-article .carousel-article-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgb(255 255 255);
+  border-radius: 26px;
+  padding: 40px 24px;
+}
+
+/* ---- Article image (square) ---- */
+.carousel-article .carousel-article-slide-image {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.carousel-article .carousel-article-slide-image p {
+  margin: 0;
+  line-height: 0;
+}
+
+.carousel-article .carousel-article-slide-image picture,
+.carousel-article .carousel-article-slide-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 45px 0 0 45px;
+}
+
+/* ---- Article text content ---- */
+.carousel-article .carousel-article-slide-content {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.carousel-article .carousel-article-slide-content h2 {
+  font-family: var(--heading-font-family);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 32px;
+  text-transform: capitalize;
+  text-align: center;
+  color: var(--text-color);
+  margin: 24px 0 8px;
+}
+
+.carousel-article .carousel-article-slide-content p {
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  color: var(--text-color);
+  margin: 4px 0 16px;
+}
+
+/* ---- Learn more pill CTA ---- */
+.carousel-article .carousel-article-slide-content p.button-container {
+  margin: 8px 0 0;
+}
+
+main .carousel-article a.button:any-link {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 24px;
+  border: 0;
+  border-radius: 100px;
+  background-color: var(--link-color);
+  color: rgb(255 255 255);
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+main .carousel-article a.button:hover,
+main .carousel-article a.button:focus {
+  background-color: var(--link-hover-color);
+}
+
+/* ---- Slide indicators (multi-slide) ---- */
+.carousel-article .carousel-article-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 12px;
+  padding: 16px 12px 0;
+  line-height: 0;
+}
+
+.carousel-article .carousel-article-slide-indicator button {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 60%);
+  transition: background-color 0.2s;
+}
+
+.carousel-article .carousel-article-slide-indicator button:disabled,
+.carousel-article .carousel-article-slide-indicator button:hover,
+.carousel-article .carousel-article-slide-indicator button:focus-visible {
+  background-color: rgb(255 255 255);
+}
+
+/* ---- Navigation arrows ---- */
+.carousel-article .carousel-article-navigation-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-article .carousel-article-navigation-buttons button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: rgb(84 108 132);
+  pointer-events: auto;
+  transition: background-color 0.2s;
+}
+
+.carousel-article .carousel-article-navigation-buttons button:hover,
+.carousel-article .carousel-article-navigation-buttons button:focus-visible {
+  background-color: rgb(64 88 112);
+}
+
+.carousel-article .carousel-article-navigation-buttons button::after {
+  display: block;
+  content: '';
+  border: 2px solid rgb(255 255 255);
+  border-bottom: 0;
+  border-left: 0;
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 2px);
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-article .carousel-article-navigation-buttons button.slide-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - 2px);
+}
+
+/* ---- Desktop: side-by-side lifestyle / article panel look ---- */
+@media (width >= 900px) {
+  .carousel-article.block {
+    padding: 48px 40px;
+  }
+
+  .carousel-article .carousel-article-slide {
+    padding: 64px;
+  }
+
+  .carousel-article .carousel-article-navigation-buttons {
+    left: 12px;
+    right: 12px;
+  }
+}

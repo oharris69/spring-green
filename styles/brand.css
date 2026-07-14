@@ -1,0 +1,24 @@
+:root {
+  /* fonts */
+  --heading-font-family: "Poppins", sans-serif;
+  --body-font-family: "Poppins", sans-serif;
+
+  /* colors */
+  --background-color: rgb(247 247 247);
+  --text-color: rgb(81 113 133);
+  --link-color: rgb(0 129 14);
+  --link-hover-color: rgb(0 100 11);
+
+  /* spacing */
+  --section-padding: 0px;
+  --content-max-width: 1280px;
+  --nav-height: 98.5px;
+
+  /* heading sizes (desktop, from source) */
+  --heading-size-xxl: 31.5px;
+  --heading-size-xl: 26px;
+  --heading-size-l: 18px;
+  --heading-size-m: 14px;
+  --heading-size-s: 18px;
+  --heading-size-xs: 16px;
+}

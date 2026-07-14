@@ -1,0 +1,75 @@
+/* hero-cta -- "Find your service provider" locator CTA band */
+
+/* Values extracted from source computed styles (div.grey-bend). */
+
+/* The grey band background comes from .section.grey. The block itself
+   renders a lighter rounded "bend" band, offset from the left edge. */
+.hero-cta {
+  background-color: rgb(238 241 244);
+  color: var(--text-color);
+  margin-left: 64px;
+  padding: 50px 0;
+  border-radius: 70px 0 0 70px;
+  text-align: center;
+}
+
+/* Row 1 holds an empty image cell in the imported content -- hide it. */
+.hero-cta > div:first-child {
+  display: none;
+}
+
+/* Text row: constrain content to a centered ~730px column. */
+.hero-cta > div:last-child > div {
+  max-width: 730px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-cta h2 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 32px;
+  text-transform: capitalize;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.hero-cta p {
+  margin: 4px 0 16px;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--text-color);
+}
+
+/* CTA button: fixed-width green pill (EDS decorates <p><a> into a.button). */
+.hero-cta .button-container {
+  margin: 0;
+}
+
+main .hero-cta a.button:any-link {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 240px;
+  max-width: 100%;
+  margin: 0;
+  padding: 10px;
+  border: none;
+  border-radius: 100px;
+  background-color: var(--link-color);
+  color: rgb(255 255 255);
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: capitalize;
+  text-decoration: none;
+  text-align: center;
+}
+
+main .hero-cta a.button:hover,
+main .hero-cta a.button:focus {
+  background-color: var(--link-hover-color);
+}

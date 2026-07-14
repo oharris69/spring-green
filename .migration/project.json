@@ -1,0 +1,11 @@
+{
+  "type": "xwalk",
+  "sites": {
+    "spring-green": {
+      "previewOrg": "oharris69",
+      "previewSite": "spring-green",
+      "baseUrl": "https://www.spring-green.com/",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

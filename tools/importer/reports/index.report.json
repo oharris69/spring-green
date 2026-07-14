@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.spring-green.com/",
+  "path": "index",
+  "timestamp": "2026-07-14T16:18:49.340Z",
+  "title": "Local Lawn Care Services & Weed Control | SpringGreen",
+  "template": "homepage",
+  "blocks": [
+    "hero-banner",
+    "cards-service",
+    "columns-media",
+    "hero-cta",
+    "carousel-article"
+  ]
+}

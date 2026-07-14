@@ -1,0 +1,38 @@
+{
+  "variantName": "carousel-article",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-07-14T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.spring-green.com/",
+    "originPage": "SpringGreen homepage",
+    "blockPosition": "bottom"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "green",
+    "density": "spacious",
+    "purpose": "article",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "rotating article slides, each image + heading + description + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "rotating carousels of article or blog teasers",
+      "content promo galleries with image + title + description + learn-more link",
+      "editorial 'featured content' sliders"
+    ],
+    "notSuitableFor": [
+      "single static featured item",
+      "content that should all be visible without interaction"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-14T00:00:00.000Z"
+  }
+}

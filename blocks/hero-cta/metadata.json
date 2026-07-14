@@ -1,0 +1,38 @@
+{
+  "variantName": "hero-cta",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-07-14T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.spring-green.com/",
+    "originPage": "SpringGreen homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "grey",
+    "density": "minimal",
+    "purpose": "cta",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "heading + paragraph + single CTA",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "text-only call-to-action panels on a solid background band",
+      "mid-page prompts with a heading, short copy and a single button",
+      "locator / find-a-provider style CTA sections"
+    ],
+    "notSuitableFor": [
+      "top-of-page hero banners with background imagery",
+      "sections requiring multiple repeating items"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-07-14T00:00:00.000Z"
+  }
+}
