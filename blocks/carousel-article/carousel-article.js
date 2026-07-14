@@ -71,6 +71,25 @@ function bindEvents(block) {
   });
 }
 
+const IMAGE_URL = /\.(png|jpe?g|webp|gif|svg|avif|bmp)(\?.*)?$/i;
+
+// Convert an image-URL anchor into <picture><img> (xwalk renders external
+// image references as plain links; the image column needs a real image).
+function imageLinkToPicture(column) {
+  column.querySelectorAll('a[href]').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (!IMAGE_URL.test(href)) return;
+    const text = a.textContent.trim();
+    const img = document.createElement('img');
+    img.src = href;
+    img.alt = (text && text !== href && text !== a.href) ? text : '';
+    img.loading = 'lazy';
+    const picture = document.createElement('picture');
+    picture.append(img);
+    a.replaceWith(picture);
+  });
+}
+
 function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
@@ -79,6 +98,7 @@ function createSlide(row, slideIndex, carouselId) {
 
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-article-slide-${colIdx === 0 ? 'image' : 'content'}`);
+    if (colIdx === 0) imageLinkToPicture(column);
     slide.append(column);
   });
 
