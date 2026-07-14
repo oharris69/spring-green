@@ -80,13 +80,14 @@ function normalizeImageLinks(main) {
   const IMAGE_EXT = /\.(png|jpe?g|webp|gif|svg|avif|bmp)(\?.*)?$/i;
   main.querySelectorAll('a[href]').forEach((a) => {
     const href = a.getAttribute('href');
+    // A link whose href is an image URL is always a rendered image, never a
+    // real CTA. Use any descriptive link text as the alt (parsers emit the
+    // image alt as the anchor text); ignore text that just repeats the URL.
     if (!IMAGE_EXT.test(href)) return;
-    // Only auto-linked image URLs (link text is the URL itself), not real CTAs.
     const text = a.textContent.trim();
-    if (text && text !== href && text !== a.href) return;
     const img = document.createElement('img');
     img.src = href;
-    img.alt = '';
+    img.alt = (text && text !== href && text !== a.href) ? text : '';
     img.loading = 'lazy';
     const picture = document.createElement('picture');
     picture.append(img);
