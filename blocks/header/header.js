@@ -76,11 +76,26 @@ export default async function decorate(block) {
   });
   mainInner.append(hamburger);
 
-  // Brand / logo
+  // Brand / logo — normalize however the author added it (plain image or
+  // image already wrapped in a link). Always render a single logo image
+  // linked to the home page.
   if (brandSec) {
     const brand = document.createElement('div');
     brand.className = 'nav-brand';
-    while (brandSec.firstChild) brand.append(brandSec.firstChild);
+
+    const logoImg = brandSec.querySelector('img');
+    const existingLink = brandSec.querySelector('a[href]');
+    if (logoImg) {
+      const homeLink = document.createElement('a');
+      homeLink.href = existingLink ? existingLink.getAttribute('href') : '/';
+      homeLink.setAttribute('aria-label', logoImg.getAttribute('alt') || 'Home');
+      const pic = logoImg.closest('picture') || logoImg;
+      homeLink.append(pic);
+      brand.append(homeLink);
+    } else {
+      // No image authored yet — keep whatever content exists as a fallback.
+      while (brandSec.firstChild) brand.append(brandSec.firstChild);
+    }
     mainInner.append(brand);
   }
 
