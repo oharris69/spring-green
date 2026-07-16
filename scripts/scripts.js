@@ -12,6 +12,8 @@ import {
   loadSections,
   loadCSS,
 } from './aem.js';
+// eslint-disable-next-line import/no-cycle
+import initializeDropins from './dropins.js';
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -142,6 +144,14 @@ export function decorateMain(main) {
  */
 async function loadEager(doc) {
   document.documentElement.lang = getMetadata('lang') || 'en';
+  // Initialize commerce dropins, but never let a config/network issue block
+  // rendering — the page must still appear if commerce init fails.
+  try {
+    await initializeDropins();
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('Commerce dropins init failed; continuing to render page.', e);
+  }
   decorateTemplateAndTheme();
   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
     doc.body.dataset.breadcrumbs = true;
@@ -311,6 +321,67 @@ async function loadLazy(doc) {
     // eslint-disable-next-line import/no-cycle
     import('./editor-support.js');
   }
+}
+
+/**
+ * Check if consent was given for a specific topic. Used by commerce.js.
+ * @param {*} topic Topic identifier
+ * @returns {boolean} True if consent was given
+ */
+// eslint-disable-next-line no-unused-vars
+export function getConsent(topic) {
+  return true;
+}
+
+/**
+ * Builds an accordion element. Used by the product-details (PDP) block.
+ * @param {string} header Accordion header HTML
+ * @param {string} content Accordion body HTML
+ * @param {boolean} expanded Whether the accordion starts open
+ * @returns {Array} [container element, updateContent function]
+ */
+export function createAccordion(header, content, expanded = false) {
+  const container = document.createElement('div');
+  container.classList.add('accordion');
+  const accordionContainer = document.createElement('details');
+  accordionContainer.classList.add('accordion-item');
+
+  const accordionHeader = document.createElement('summary');
+  accordionHeader.classList.add('accordion-item-label');
+  accordionHeader.innerHTML = `<div>${header}</div>`;
+
+  const accordionContent = document.createElement('div');
+  accordionContent.classList.add('accordion-item-body');
+  accordionContent.innerHTML = content;
+
+  accordionContainer.append(accordionHeader, accordionContent);
+  container.append(accordionContainer);
+
+  if (expanded) {
+    accordionContent.classList.toggle('active');
+    accordionHeader.classList.add('open-default');
+    accordionContainer.setAttribute('open', true);
+  }
+
+  function updateContent(newContent) {
+    accordionContent.innerHTML = newContent;
+  }
+
+  return [container, updateContent];
+}
+
+/**
+ * Builds a simple list from data. Used by the product-details (PDP) block.
+ * @param {Array} data Array of { label, value }
+ * @returns {string} List HTML
+ */
+export function generateListHTML(data) {
+  let html = '<ul>';
+  data.forEach((item) => {
+    html += `<li>${item.label}: <span>${item.value}</span></li>`;
+  });
+  html += '</ul>';
+  return html;
 }
 
 /**

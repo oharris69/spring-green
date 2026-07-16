@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { showSlide } from '../blocks/carousel/carousel.js';
 import {
   decorateBlock,

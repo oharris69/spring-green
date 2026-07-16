@@ -1,0 +1,19 @@
+{
+  "total": 11,
+  "offset": 0,
+  "limit": 11,
+  "data": [
+    { "key": "commerce-endpoint", "value": "https://catalog-service-sandbox.adobe.io/graphql" },
+    { "key": "commerce-environment-id", "value": "cb54fa28-9e38-4123-be84-8e05e2bb549b" },
+    { "key": "commerce-website-code", "value": "citisignal" },
+    { "key": "commerce-store-view-code", "value": "citisignal_us" },
+    { "key": "commerce-store-code", "value": "citisignal_store" },
+    { "key": "commerce-customer-group", "value": "b6589fc6ab0dc82cf12099d1c2d40ab994e8410c" },
+    { "key": "commerce-x-api-key", "value": "storefront-widgets" },
+    { "key": "commerce-core-endpoint", "value": "https://citisignal-eds.adobedemo.com/graphql" },
+    { "key": "commerce-root-category-id", "value": "10" },
+    { "key": "store", "value": "citisignal_us" },
+    { "key": "adyen-client-key", "value": "test_DQGCHYCTAVA63LJNHCE5TQPU3AEIGRZ2" }
+  ],
+  ":type": "sheet"
+}

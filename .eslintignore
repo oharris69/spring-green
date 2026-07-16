@@ -1,2 +1,9 @@
 helix-importer-ui
 dompurify.min.js
+scripts/__dropins__/*
+scripts/commerce.js
+scripts/configs.js
+scripts/dropins.js
+configs.json
+configs-dev.json
+configs-stage.json
