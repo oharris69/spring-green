@@ -15,6 +15,32 @@ import {
 // eslint-disable-next-line import/no-cycle
 import initializeDropins from './dropins.js';
 
+// Minimal Adobe Client Data Layer stub so commerce dropins / recommendations
+// can push events before the full ACDL library (if any) loads. Provides the
+// push / getState / addEventListener surface the commerce code relies on.
+if (!window.adobeDataLayer || typeof window.adobeDataLayer.getState !== 'function') {
+  const queue = Array.isArray(window.adobeDataLayer) ? window.adobeDataLayer : [];
+  const state = {};
+  const listeners = [];
+  window.adobeDataLayer = {
+    getState: (path) => (path ? state[path] : { ...state }),
+    addEventListener: (type, cb, opts) => listeners.push({ type, cb, path: opts && opts.path }),
+    push: (arg) => {
+      if (typeof arg === 'function') {
+        arg(window.adobeDataLayer);
+        return;
+      }
+      if (arg && typeof arg === 'object') {
+        Object.assign(state, arg);
+        listeners
+          .filter((l) => l.type === 'adobeDataLayer:change' && (!l.path || arg[l.path] !== undefined))
+          .forEach((l) => l.cb(arg));
+      }
+    },
+  };
+  window.adobeDataLayer.push(...queue);
+}
+
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from

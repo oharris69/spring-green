@@ -228,6 +228,12 @@ export default async function decorate(block) {
     dl.addEventListener('adobeDataLayer:change', handleCartChanges, { path: 'shoppingCartContext' });
   });
 
+  // On content pages (no PDP/PLP), no pageContext is pushed, so recommendations
+  // never load. Seed a generic PageBuilder pageType so the unit renders.
+  if (!window.adobeDataLayer.getState('pageContext')) {
+    window.adobeDataLayer.push({ pageContext: { pageType: 'PageBuilder' } });
+  }
+
   if (isMobile) {
     const section = block.closest('.section');
     const inViewObserver = new IntersectionObserver((entries) => {
