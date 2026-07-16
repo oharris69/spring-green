@@ -18,8 +18,10 @@ const productSearchQuery = `query ProductTeaserSearch($phrase: String!, $pageSiz
   }
 }`;
 
+const FALLBACK_IMAGE = new URL('./placeholder.svg', import.meta.url).href;
+
 function renderItem(product) {
-  const image = (product.images && product.images[0] && product.images[0].url) || '';
+  const image = (product.images && product.images[0] && product.images[0].url) || FALLBACK_IMAGE;
   const href = `/products/${product.urlKey}/${product.sku.toLowerCase()}`;
   const fig = document.createElement('div');
   fig.className = 'product-teaser-search-item';
@@ -28,6 +30,20 @@ function renderItem(product) {
       <picture><img loading="lazy" alt="${product.name}" src="${image}"></picture>
       <span>${product.name}</span>
     </a>`;
+  // Swap to the local placeholder if the catalog image fails to load or
+  // stalls (e.g. sandbox media host unreachable cross-origin — the request
+  // hangs rather than firing an error, so also use a load timeout).
+  const img = fig.querySelector('img');
+  const useFallback = () => {
+    if (img.src !== FALLBACK_IMAGE && !(img.complete && img.naturalWidth > 0)) {
+      img.src = FALLBACK_IMAGE;
+    }
+  };
+  img.addEventListener('error', useFallback);
+  const timer = setTimeout(useFallback, 3000);
+  img.addEventListener('load', () => {
+    if (img.naturalWidth > 0) clearTimeout(timer);
+  });
   return fig;
 }
 
