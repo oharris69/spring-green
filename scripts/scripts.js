@@ -163,20 +163,29 @@ async function loadEager(doc) {
   }
 }
 
+const SITE_URL = 'https://www.spring-green.com/';
+
 /**
- * Adds LocalBusiness structured data (JSON-LD) to the document head for SEO.
- * Sourced from page metadata where available, with sensible fallbacks.
+ * Appends one JSON-LD schema object to the document head.
+ * @param {object} schema schema.org object
  */
-function buildStructuredData() {
-  if (document.querySelector('script[type="application/ld+json"]')) return;
+function appendJsonLd(schema) {
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+/** LocalBusiness — core organization facts. */
+function buildLocalBusinessSchema() {
   const desc = getMetadata('description')
     || 'Neighborhood lawn care, pest control, and tree care experts since 1977.';
-  const schema = {
+  appendJsonLd({
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
     name: 'SpringGreen',
     legalName: 'Spring - Green Lawn Care Corp.',
-    url: 'https://www.spring-green.com/',
+    url: SITE_URL,
     description: desc,
     foundingDate: '1977',
     areaServed: 'US',
@@ -187,11 +196,93 @@ function buildStructuredData() {
       'https://www.youtube.com/user/SpringGreenLawnCare',
       'https://www.linkedin.com/company/spring-green-lawn-care/',
     ],
-  };
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.textContent = JSON.stringify(schema);
-  document.head.appendChild(script);
+  });
+}
+
+/** WebSite + SearchAction — enables sitelinks search box. */
+function buildWebSiteSchema() {
+  appendJsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'SpringGreen',
+    url: SITE_URL,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_URL}search?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  });
+}
+
+/**
+ * BreadcrumbList — derived from the current URL path so agents understand
+ * where the page sits in the site hierarchy.
+ */
+function buildBreadcrumbSchema() {
+  const segments = window.location.pathname.split('/').filter((s) => s && !s.endsWith('.html'));
+  if (!segments.length) return; // homepage — no breadcrumb needed
+  const items = [{
+    '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL,
+  }];
+  let path = '';
+  segments.forEach((seg, i) => {
+    path += `/${seg}`;
+    const name = seg.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+    items.push({
+      '@type': 'ListItem',
+      position: i + 2,
+      name,
+      item: `${SITE_URL.replace(/\/$/, '')}${path}/`,
+    });
+  });
+  appendJsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items,
+  });
+}
+
+/**
+ * FAQPage — auto-built from an accordion block on the page. Reads each
+ * accordion row's summary (question) and body (answer). Only emitted when
+ * an accordion with content exists, so it never produces empty schema.
+ */
+function buildFaqSchema(doc) {
+  const details = [...doc.querySelectorAll('.accordion details, .accordion .accordion-item')];
+  const entries = details.map((d) => {
+    const q = d.querySelector('summary, [class*="label"], h2, h3, h4');
+    const a = d.querySelector('[class*="body"], [class*="content"], div:last-child, p');
+    if (!q || !a) return null;
+    const question = q.textContent.trim();
+    const answer = a.textContent.trim();
+    if (!question || !answer || question === answer) return null;
+    return {
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    };
+  }).filter(Boolean);
+  if (!entries.length) return;
+  appendJsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: entries,
+  });
+}
+
+/**
+ * Adds all structured data (JSON-LD) to the document head for SEO / GEO.
+ * @param {Element} doc The container element
+ */
+function buildStructuredData(doc) {
+  if (document.querySelector('script[type="application/ld+json"]')) return;
+  buildLocalBusinessSchema();
+  buildWebSiteSchema();
+  buildBreadcrumbSchema();
+  buildFaqSchema(doc);
 }
 
 /**
@@ -213,7 +304,7 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
-  buildStructuredData();
+  buildStructuredData(doc);
 
   // Load Universal Editor support only when the page is opened in the editor.
   if (document.querySelector('[data-aue-resource]') || window.location.href.includes('.adobeaemcloud.')) {
