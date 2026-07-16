@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import { fetchPlaceholders } from '../../scripts/placeholders.js';
 
