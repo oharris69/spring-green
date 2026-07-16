@@ -370,6 +370,66 @@
           }
         },
         {
+          "title": "Product Cards Dam",
+          "id": "product-cards-dam",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Cards Dam",
+                  "filter": "product-cards-dam"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Card",
+          "id": "product-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Card",
+                  "model": "product-card"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Recommendations",
+          "id": "product-recommendations",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Recommendations",
+                  "model": "product-recommendations"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Teaser Search",
+          "id": "product-teaser-search",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Teaser Search",
+                  "model": "product-teaser-search"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Quote",
           "id": "quote",
           "plugins": {

@@ -59,7 +59,15 @@
         "table",
         "text",
         "title",
-        "video"
+        "video",
+        "hero-banner",
+        "hero-cta",
+        "cards-service",
+        "columns-media",
+        "carousel-article",
+        "product-cards-dam",
+        "product-teaser-search",
+        "product-recommendations"
       ]
     }
   ]

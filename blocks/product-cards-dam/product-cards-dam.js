@@ -14,10 +14,15 @@ export default function decorate(block) {
     const cells = [...row.children];
     const imgEl = row.querySelector('img');
     const imgSrc = (imgEl && imgEl.getAttribute('src'))
-      || (cells[0] && cells[0].textContent.trim());
-    const title = cells[1] ? cells[1].textContent.trim() : '';
+      || (cells[0] && !imgEl && cells[0].textContent.trim());
     const link = row.querySelector('a');
     const href = link ? link.getAttribute('href') : '#';
+    // Title: prefer a heading; else the link text; else the first non-image cell text.
+    const heading = row.querySelector('h1, h2, h3, h4, h5, h6');
+    const title = (heading && heading.textContent.trim())
+      || (link && link.textContent.trim())
+      || (cells[1] && cells[1].textContent.trim())
+      || '';
 
     const card = document.createElement('div');
     card.className = 'product-cards-dam-item';
