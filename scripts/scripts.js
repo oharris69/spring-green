@@ -141,7 +141,7 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  document.documentElement.lang = getMetadata('lang') || 'en';
   decorateTemplateAndTheme();
   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
     doc.body.dataset.breadcrumbs = true;
@@ -164,6 +164,37 @@ async function loadEager(doc) {
 }
 
 /**
+ * Adds LocalBusiness structured data (JSON-LD) to the document head for SEO.
+ * Sourced from page metadata where available, with sensible fallbacks.
+ */
+function buildStructuredData() {
+  if (document.querySelector('script[type="application/ld+json"]')) return;
+  const desc = getMetadata('description')
+    || 'Neighborhood lawn care, pest control, and tree care experts since 1977.';
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'HomeAndConstructionBusiness',
+    name: 'SpringGreen',
+    legalName: 'Spring - Green Lawn Care Corp.',
+    url: 'https://www.spring-green.com/',
+    description: desc,
+    foundingDate: '1977',
+    areaServed: 'US',
+    knowsAbout: ['Lawn Care', 'Pest Control', 'Tree Care'],
+    sameAs: [
+      'https://www.facebook.com/SpringGreen',
+      'https://twitter.com/springgreenlawn',
+      'https://www.youtube.com/user/SpringGreenLawnCare',
+      'https://www.linkedin.com/company/spring-green-lawn-care/',
+    ],
+  };
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
@@ -182,6 +213,7 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+  buildStructuredData();
 
   // Load Universal Editor support only when the page is opened in the editor.
   if (document.querySelector('[data-aue-resource]') || window.location.href.includes('.adobeaemcloud.')) {
