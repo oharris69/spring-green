@@ -182,6 +182,12 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  // Load Universal Editor support only when the page is opened in the editor.
+  if (document.querySelector('[data-aue-resource]') || window.location.href.includes('.adobeaemcloud.')) {
+    // eslint-disable-next-line import/no-cycle
+    import('./editor-support.js');
+  }
 }
 
 /**
