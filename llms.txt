@@ -1,0 +1,31 @@
+# SpringGreen
+
+> SpringGreen (Spring - Green Lawn Care Corp.) is a locally owned and operated neighborhood lawn care, pest control, and tree care company serving homeowners across the United States since 1977. Services are tailored to each customer's local climate and needs and are performed by trained, licensed technicians. Every application is backed by a 100% satisfaction guarantee.
+
+## About
+
+- **Founded:** 1977
+- **Type:** Home and construction / lawn and landscape services business
+- **Service areas:** Locations throughout the United States
+- **Guarantee:** If you aren't completely satisfied with the results, SpringGreen will make it right or refund the entire cost of that application.
+
+## Services
+
+- [Lawn Care](https://www.spring-green.com/services/lawn-care-services/): Tailored fertilization and weed prevention for your local climate, including core aeration, overseeding, grassy weed control, lawn disease control, and lime treatments.
+- [Pest Control](https://www.spring-green.com/services/pest-services/): Indoor and outdoor pest control covering mosquitoes, grubs, ants, fleas, ticks, and perimeter pests.
+- [Tree Care](https://www.spring-green.com/services/tree-and-shrub-services/): Tailor-made tree and shrub programs, including a 2-step tree care program and root feeding, to keep trees and shrubs healthy.
+
+## Key pages
+
+- [Home](https://www.spring-green.com/)
+- [Service Areas / Find a Local Provider](https://www.spring-green.com/lawn-care-locations/)
+- [Learn (lawn, pest, and tree care guides)](https://www.spring-green.com/learn/)
+- [About Us](https://www.spring-green.com/about-us/)
+- [Contact](https://www.spring-green.com/about-us/contact-spring-green/)
+
+## Contact and social
+
+- Facebook: https://www.facebook.com/SpringGreen
+- Twitter/X: https://twitter.com/springgreenlawn
+- YouTube: https://www.youtube.com/user/SpringGreenLawnCare
+- LinkedIn: https://www.linkedin.com/company/spring-green-lawn-care/
