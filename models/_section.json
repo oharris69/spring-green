@@ -67,7 +67,8 @@
         "carousel-article",
         "product-cards-dam",
         "product-teaser-search",
-        "product-recommendations"
+        "product-recommendations",
+        "content-fragment"
       ]
     }
   ]

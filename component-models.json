@@ -295,6 +295,25 @@
     ]
   },
   {
+    "id": "content-fragment",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "slug",
+        "label": "Service Slug",
+        "value": "lawn-care-services"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "endpoint",
+        "label": "GraphQL Endpoint (optional)",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "embed",
     "fields": [
       {

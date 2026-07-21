@@ -1,0 +1,52 @@
+.content-fragment .cf-service {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: center;
+  border: 1px solid rgb(229 231 235);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+}
+
+@media (width >= 900px) {
+  .content-fragment .cf-service {
+    grid-template-columns: 40% 1fr;
+  }
+}
+
+.content-fragment .cf-service-media picture {
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: #f7f7f7;
+}
+
+.content-fragment .cf-service-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content-fragment .cf-service-body {
+  padding: 24px 28px;
+}
+
+.content-fragment .cf-service-body h2 {
+  margin: 0 0 12px;
+  color: var(--text-color);
+}
+
+.content-fragment .cf-service-desc {
+  color: var(--text-color);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.content-fragment .cf-service-desc ul {
+  margin: 12px 0 0;
+  padding-left: 20px;
+}
+
+.content-fragment .cf-service-desc li {
+  margin: 4px 0;
+}

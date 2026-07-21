@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "lawn-care-services",
+    "name": "Preferred Lawn Care Program",
+    "description": "<p>Our most popular lawn care program! Fertilization and weed control services are tailored to fit your needs. It provides the results you expect from a professional lawn care provider.</p><ul><li>High-Quality Fertilizer</li><li>Targeted Weed Control</li><li>Free Lawn and Landscape Evaluation</li><li>Lawn Care and Maintenance Tips</li><li>Free Service Calls</li><li>Spring Green Guarantee</li></ul>",
+    "image": "https://images.spring-green.com/media/pages/homepage/homepage-sec1img1.webp"
+  },
+  {
+    "slug": "pest-services",
+    "name": "Pest Control",
+    "description": "<p>Mosquitoes, grubs, ants or mice. Whatever's bothering your lawn or home, we have your indoor and outdoor pest control needs covered.</p><ul><li>Mosquito Control</li><li>Grub Control</li><li>Flea & Tick Control</li><li>Perimeter Pest Control</li></ul>",
+    "image": "https://images.spring-green.com/media/pages/homepage/homepage-sec1img2.webp"
+  },
+  {
+    "slug": "tree-and-shrub-services",
+    "name": "Tree Care",
+    "description": "<p>Your trees and shrubs add visual appeal to your home and increase its value. We provide tailor-made programs to keep them healthy in every season.</p><ul><li>2-Step Tree Care Program</li><li>Root Feeding</li></ul>",
+    "image": "https://images.spring-green.com/media/pages/homepage/homepage-sec1img3.webp"
+  }
+]
